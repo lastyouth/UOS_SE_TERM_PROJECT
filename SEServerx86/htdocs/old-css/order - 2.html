@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang='ko'>
+	<head>
+		<meta charset='utf-8'/>
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+
+		<title>Welcome to Mr.Mat's Restaurant</title>
+		<meta name='description' content='' />
+		<meta name='author' content='T1000' />
+
+		<!-- 반응형 UI -->
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    	<!-- <link href='assets/css/bootstrap-responsive.css' rel='stylesheet'> -->
+    	
+    	<!-- CDN 으로 링크하기. 왜 안되는지 모르겠음.. http://www.bootstrapcdn.com/
+    		bootstrap.min.css 사용법 찾아보기 > 부트스트랩2.0 > 3.0 클래스 이름과 정의가 많이 바뀜!
+    	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    	<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+
+    	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'> -->
+    	
+    	<!-- Custom CSS-->
+    	<link href='css/customized_order.css' rel='stylesheet'>
+    	
+    	<!-- set bootstrap, font, style
+    	<link rel='stylesheet' href='css/bootstrap.min.css' type='text/css' media='screen' title='no title' charset='utf-8'/>-->
+    	<link rel='stylesheet' href='css/bootstrap.css' type='text/css' media='screen' title='no title' charset='utf-8'/>
+    	<link rel='stylesheet' href='css/bootstrap-theme.min.css' type='text/css' media='screen' title='no title' charset='utf-8'/>
+    	<link rel='stylesheet' href='css/font-awesome.min.css' type='text/css' media='screen' title='no title' charset='utf-8'/>
+		<link rel='stylesheet' href='css/font-awesome.css' type='text/css' media='screen' title='no title' charset='utf-8'/>
+		<link rel='stylesheet' href='css/style.css' type='text/css' media='screen' title='no title' charset='utf-8'/>
+	   
+	    <!--<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>-->
+	    <!--<script src='http://getbootstrap.com/js/bootstrap.js'></script>-->
+
+    <!--[if lt IE 9]>
+    <script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+
+	</head>
+	
+	
+	<script type="text/javascript">
+	/*
+		var httpReq = new XMLHttpRequest();
+		var params = 'type=order';
+		
+		httpReq.open('POST','http://moonlightchaser.mooo.com:8090/Interface/requestjsondata.php',false);
+		
+		httpReq.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		
+		try {
+			httpReq.send(params);
+		}
+		catch(e){
+			alert(e.message);
+		}
+		
+		alert(params);
+		var jsonobject = httpReq.responseText;
+		
+		jsonobject = JSON.parse(jsonobject);
+		*/
+		var jsonobject = '{"menulist":[{"dbkey":0,"name":"어니언 트위스트","Ingredient_list":[{"dbkey":0,"name":"감자","val":440},{"dbkey":1,"name":"양파","val":500}],"discription":"유기농 감자와 양파가 어우러진 맛있는 어니언 트위스트입니다.","cost":14400},{"dbkey":1,"name":"서로인 스테이크","Ingredient_list":[{"dbkey":3,"name":"쇠고기_서로인","val":380},{"dbkey":2,"name":"브로콜리","val":200},{"dbkey":7,"name":"양송이버섯","val":100}],"discription":"호주산 소고기의 최고급 부위인 서로인을 사용하여 Mr.Mat 특제 시즈닝을 첨가하여 직화로 구워낸 스테이크 입니다. 가니쉬로 브로콜리와 양송이가 제공됩니다.","cost":25000},{"dbkey":2,"name":"닭가슴살 샐러드","Ingredient_list":[{"dbkey":6,"name":"닭고기_닭가슴살","val":400},{"dbkey":8,"name":"양상추","val":280},{"dbkey":4,"name":"당근","val":280}],"discription":"신선한 닭가슴살과 양상추, 그리고 각종 야채가 어우러진 풍성한 샐러드입니다.","cost":8900},{"dbkey":3,"name":"양송이 슾","Ingredient_list":[{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":50}],"discription":"양송이와 양파가 들어간 풍부한 맛을 자랑하는 슾입니다.","cost":4500},{"dbkey":4,"name":"쿠카부라 파이어드 레그프레스","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":400}],"discription":"풍부한 육질을 자랑하는 쿠카부라 레그! 직화구이로 그 맛을 한층 더 깊게 합니다.","cost":11900},{"dbkey":5,"name":"샤또 레오 드 뽕떼","Ingredient_list":[{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800}],"discription":"감미로운 향을 자랑하는 샤또 레오 드 뽕떼는 스테이크 요리와 환상의 궁합을 자랑하는 레드와인 입니다!","cost":32000},{"dbkey":6,"name":"꾸브작 쌩때밀리옹","Ingredient_list":[{"dbkey":10,"name":"꾸브작 쌩때밀리옹","val":1000}],"discription":"나폴레옹이 즐겨 마셨다는, 보르도 산 특별 와인! 당신의 품격을 높혀드립니다.","cost":45000},{"dbkey":7,"name":"쇠고기 안심 스테이크","Ingredient_list":[{"dbkey":13,"name":"쇠고기_안심","val":350},{"dbkey":14,"name":"파프리카","val":200},{"dbkey":7,"name":"양송이버섯","val":150}],"discription":"호주산 1등급 쇠고기 안심을 엄선하여 직화로 구운 스테이크입니다.","cost":32000},{"dbkey":8,"name":"찹 스테이크","Ingredient_list":[{"dbkey":11,"name":"돼지고기_서로인","val":150},{"dbkey":12,"name":"돼지고기_안심","val":150},{"dbkey":1,"name":"양파","val":100},{"dbkey":14,"name":"파프리카","val":100}],"discription":"돼지고기 안심과 등심을 한입 크기로 손질하여, 특제 앙념과 함께 구워낸 맛있는 요리입니다.","cost":15000},{"dbkey":9,"name":"에스빠뇰 스튜","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":120},{"dbkey":11,"name":"돼지고기_서로인","val":120},{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":4,"name":"당근","val":50}],"discription":"에스빠뇰 스타일의 스튜로, 닭고기와 돼지고기가 함께 들어가는것이 특징입니다.","cost":18900},{"dbkey":10,"name":"코코뱅","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":200},{"dbkey":6,"name":"닭고기_닭가슴살","val":200},{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800},{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":100}],"discription":"프랑스에서 일요일마다 먹는 닭 요리로, 샤또 레오 드 뽕떼 와인이 한 병 통째로 들어갑니다.","cost":50000}],"courselist":[{"dbkey":0,"name":"아메리칸 슈퍼바이저 컨펌드 디너","main_menu_list":[{"dbkey":1,"name":"서로인 스테이크","Ingredient_list":[{"dbkey":3,"name":"쇠고기_서로인","val":380},{"dbkey":2,"name":"브로콜리","val":200},{"dbkey":7,"name":"양송이버섯","val":100}],"discription":"호주산 소고기의 최고급 부위인 서로인을 사용하여 Mr.Mat 특제 시즈닝을 첨가하여 직화로 구워낸 스테이크 입니다. 가니쉬로 브로콜리와 양송이가 제공됩니다.","cost":25000}],"sub_menu_list":[{"dbkey":0,"name":"어니언 트위스트","Ingredient_list":[{"dbkey":0,"name":"감자","val":440},{"dbkey":1,"name":"양파","val":500}],"discription":"유기농 감자와 양파가 어우러진 맛있는 어니언 트위스트입니다.","cost":14400},{"dbkey":2,"name":"닭가슴살 샐러드","Ingredient_list":[{"dbkey":6,"name":"닭고기_닭가슴살","val":400},{"dbkey":8,"name":"양상추","val":280},{"dbkey":4,"name":"당근","val":280}],"discription":"신선한 닭가슴살과 양상추, 그리고 각종 야채가 어우러진 풍성한 샐러드입니다.","cost":8900},{"dbkey":5,"name":"샤또 레오 드 뽕떼","Ingredient_list":[{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800}],"discription":"감미로운 향을 자랑하는 샤또 레오 드 뽕떼는 스테이크 요리와 환상의 궁합을 자랑하는 레드와인 입니다!","cost":32000}],"style_list":["Simple","Deluxe"],"discription":"당신의 상사가 승인한 아메리칸 스타일 디너!!","totalprice":80300},{"dbkey":1,"name":"치킨 앤 샤또","main_menu_list":[{"dbkey":2,"name":"닭가슴살 샐러드","Ingredient_list":[{"dbkey":6,"name":"닭고기_닭가슴살","val":400},{"dbkey":8,"name":"양상추","val":280},{"dbkey":4,"name":"당근","val":280}],"discription":"신선한 닭가슴살과 양상추, 그리고 각종 야채가 어우러진 풍성한 샐러드입니다.","cost":8900},{"dbkey":4,"name":"쿠카부라 파이어드 레그프레스","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":400}],"discription":"풍부한 육질을 자랑하는 쿠카부라 레그! 직화구이로 그 맛을 한층 더 깊게 합니다.","cost":11900}],"sub_menu_list":[{"dbkey":5,"name":"샤또 레오 드 뽕떼","Ingredient_list":[{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800}],"discription":"감미로운 향을 자랑하는 샤또 레오 드 뽕떼는 스테이크 요리와 환상의 궁합을 자랑하는 레드와인 입니다!","cost":32000},{"dbkey":5,"name":"샤또 레오 드 뽕떼","Ingredient_list":[{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800}],"discription":"감미로운 향을 자랑하는 샤또 레오 드 뽕떼는 스테이크 요리와 환상의 궁합을 자랑하는 레드와인 입니다!","cost":32000}],"style_list":["Simple","Deluxe","Grand"],"discription":"샤또 레오 드 뽕떼와 치킨은 최고의 파트너!","totalprice":84800},{"dbkey":2,"name":"코코뱅 앤 데얼 프렌즈","main_menu_list":[{"dbkey":10,"name":"코코뱅","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":200},{"dbkey":6,"name":"닭고기_닭가슴살","val":200},{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800},{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":100}],"discription":"프랑스에서 일요일마다 먹는 닭 요리로, 샤또 레오 드 뽕떼 와인이 한 병 통째로 들어갑니다.","cost":50000},{"dbkey":9,"name":"에스빠뇰 스튜","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":120},{"dbkey":11,"name":"돼지고기_서로인","val":120},{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":4,"name":"당근","val":50}],"discription":"에스빠뇰 스타일의 스튜로, 닭고기와 돼지고기가 함께 들어가는것이 특징입니다.","cost":18900}],"sub_menu_list":[{"dbkey":6,"name":"꾸브작 쌩때밀리옹","Ingredient_list":[{"dbkey":10,"name":"꾸브작 쌩때밀리옹","val":1000}],"discription":"나폴레옹이 즐겨 마셨다는, 보르도 산 특별 와인! 당신의 품격을 높혀드립니다.","cost":45000},{"dbkey":3,"name":"양송이 슾","Ingredient_list":[{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":50}],"discription":"양송이와 양파가 들어간 풍부한 맛을 자랑하는 슾입니다.","cost":4500},{"dbkey":2,"name":"닭가슴살 샐러드","Ingredient_list":[{"dbkey":6,"name":"닭고기_닭가슴살","val":400},{"dbkey":8,"name":"양상추","val":280},{"dbkey":4,"name":"당근","val":280}],"discription":"신선한 닭가슴살과 양상추, 그리고 각종 야채가 어우러진 풍성한 샐러드입니다.","cost":8900}],"style_list":["Simple","Deluxe"],"discription":"코코뱅과 잘 어울리는 메뉴만 엄선한 코코뱅과 그의 친구들!","totalprice":127300},{"dbkey":3,"name":"올-인원 프리페어 포 굿 파티","main_menu_list":[{"dbkey":10,"name":"코코뱅","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":200},{"dbkey":6,"name":"닭고기_닭가슴살","val":200},{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800},{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":100}],"discription":"프랑스에서 일요일마다 먹는 닭 요리로, 샤또 레오 드 뽕떼 와인이 한 병 통째로 들어갑니다.","cost":50000},{"dbkey":1,"name":"서로인 스테이크","Ingredient_list":[{"dbkey":3,"name":"쇠고기_서로인","val":380},{"dbkey":2,"name":"브로콜리","val":200},{"dbkey":7,"name":"양송이버섯","val":100}],"discription":"호주산 소고기의 최고급 부위인 서로인을 사용하여 Mr.Mat 특제 시즈닝을 첨가하여 직화로 구워낸 스테이크 입니다. 가니쉬로 브로콜리와 양송이가 제공됩니다.","cost":25000},{"dbkey":7,"name":"쇠고기 안심 스테이크","Ingredient_list":[{"dbkey":13,"name":"쇠고기_안심","val":350},{"dbkey":14,"name":"파프리카","val":200},{"dbkey":7,"name":"양송이버섯","val":150}],"discription":"호주산 1등급 쇠고기 안심을 엄선하여 직화로 구운 스테이크입니다.","cost":32000}],"sub_menu_list":[{"dbkey":0,"name":"어니언 트위스트","Ingredient_list":[{"dbkey":0,"name":"감자","val":440},{"dbkey":1,"name":"양파","val":500}],"discription":"유기농 감자와 양파가 어우러진 맛있는 어니언 트위스트입니다.","cost":14400},{"dbkey":4,"name":"쿠카부라 파이어드 레그프레스","Ingredient_list":[{"dbkey":5,"name":"닭고기_닭다리","val":400}],"discription":"풍부한 육질을 자랑하는 쿠카부라 레그! 직화구이로 그 맛을 한층 더 깊게 합니다.","cost":11900},{"dbkey":3,"name":"양송이 슾","Ingredient_list":[{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":50}],"discription":"양송이와 양파가 들어간 풍부한 맛을 자랑하는 슾입니다.","cost":4500},{"dbkey":3,"name":"양송이 슾","Ingredient_list":[{"dbkey":7,"name":"양송이버섯","val":100},{"dbkey":1,"name":"양파","val":50}],"discription":"양송이와 양파가 들어간 풍부한 맛을 자랑하는 슾입니다.","cost":4500},{"dbkey":6,"name":"꾸브작 쌩때밀리옹","Ingredient_list":[{"dbkey":10,"name":"꾸브작 쌩때밀리옹","val":1000}],"discription":"나폴레옹이 즐겨 마셨다는, 보르도 산 특별 와인! 당신의 품격을 높혀드립니다.","cost":45000},{"dbkey":5,"name":"샤또 레오 드 뽕떼","Ingredient_list":[{"dbkey":9,"name":"샤또 레오 드 뽕떼","val":800}],"discription":"감미로운 향을 자랑하는 샤또 레오 드 뽕떼는 스테이크 요리와 환상의 궁합을 자랑하는 레드와인 입니다!","cost":32000}],"style_list":["Simple","Grand"],"discription":"즐거운 파티를 위한 선결 조건! 이 코스요리로 모든 걱정을 해결하십시오.","totalprice":219300}]}';
+		jsonobject = JSON.parse(jsonobject);
+		
+		/*
+		 * jsonobject['menulist'] -> 모든 메뉴 리스트
+		 * 		jsonobject['menulist'].length -> 메뉴의 개수
+		 * 		jsonobject['menulist'][i] -> 하나의 메뉴
+		 * 				jsonobject['menulist'][i]['dbkey'] -> 메뉴에 대응되는 dbkey
+		 * 				jsonobject['menulist'][i]['name'] -> 메뉴 이름
+		 * 				jsonobject['menulist'][i]['ingredient_list'] -> 메뉴에 포함되는 원재료 리스트
+		 * 					jsonobject['menulist'][i]['ingredient_list']['dbkey'] -> 원재료의 dbkey
+		 * 					jsonobject['menulist'][i]['ingredient_list']['name'] -> 원재료의 이름
+		 * 					jsonobject['menulist'][i]['ingredient_list']['val'] -> 메뉴에 필요한 원재료의 수치
+		 * 				jsonobject['menulist'][i]['discription'] -> 메뉴 설명
+		 * 				jsonobject['menulist'][i]['cost'] -> 메뉴 가격
+		 * 
+		 * jsonobject['courselist'] -> 모든 코스 리스트
+		 * 		jsonobject['courselist'].length -> 코스 메뉴의 개수
+		 * 		jsonobject['courselist'][i] -> 하나의 코스요리
+		 * 				jsonobject['courselist'][i]['dbkey'] -> 코스 요리의 dbkey
+		 * 				jsonobject['courselist'][i]['name'] -> 코스 요리의 이름
+		 * 				jsonobject['courselist'][i]['main_menu_list'] -> 메인 메뉴 리스트
+		 * 					jsonobject['courselist'][i]['main_menu_list'].length -> 메인 메뉴 개수
+		 * 				jsonobject['courselist'][i]['sub_menu_list'] -> 서브 메뉴 리스트
+		 * 					jsonobject['courselist'][i]['sub_menu_list'] -> 서브 메뉴 개수
+		 * 				jsonobject['courselist'][i]['style_list'] -> 가능한 스타일 리스트
+		 * 				jsonobject['courselist'][i]['discription'] -> 코스 요리 설명
+		 * 				jsonobject['courselist'][i]['totalprice'] -> 코스 요리의 가격
+		 */
+		/*
+		var courseMenu=[{},{},{},{},{},{},{}];
+		var courseMenuList=[];
+		courseMenu[0].name = 'French Course With Foie gras';
+		courseMenu[0].price = '19,000';
+		courseMenu[0].numOfMainMenu = '1';
+		courseMenu[0].numOfSubMenu = '1';
+		
+		courseMenu[1].name = 'Korean Table dhote With SinSeonRo';
+		courseMenu[1].price = '18,000';
+		courseMenu[1].numOfMainMenu = 2;
+		courseMenu[1].numOfSubMenu = 2;
+		
+		courseMenu[2].name = 'Italian Course With Gorgonzola';
+		courseMenu[2].price = '15,000';
+		courseMenu[2].numOfMainMenu = 3;
+		courseMenu[2].numOfSubMenu = 3;
+		
+		courseMenu[3].name = 'Chinese Course';
+		courseMenu[3].price = '14,000';
+		courseMenu[3].numOfMainMenu = 4;
+		courseMenu[3].numOfSubMenu = 4;
+		*/
+		var selectedList = [];
+		
+		//모든 메뉴들의 이름에 대한 디비키, 가격
+		var menuInfo = [];
+		for (var i = 0; i < jsonobject['menulist'].length; i++)
+		{
+			var dbkey = jsonobject['menulist'][i]['dbkey'];
+			var cost = jsonobject['menulist'][i]['cost'];
+			var name = jsonobject['menulist'][i]['name'];
+			
+			menuInfo[name] = {};
+			menuInfo[name].cost = cost;
+			menuInfo[name].dbkey = dbkey;
+		}
+
+		//모든 코스들의 이름에 대한 디비키, 메인메뉴 리스트, 서브메뉴 리스트
+		var courseInfo = [];
+		for (var i = 0; i < jsonobject['courselist'].length; i++)
+		{
+			var dbkey = jsonobject['courselist'][i]['dbkey'];
+			var name = jsonobject['courselist'][i]['name'];
+			
+			courseInfo[name] = {};
+			courseInfo[name].dbkey = dbkey;
+			courseInfo[name].mainMenuList = jsonobject['courselist'][i]['main_menu_list'];
+			courseInfo[name].subMenuList = jsonobject['courselist'][i]['sub_menu_list'];
+		}
+		
+		var orderInfo = {};
+		/*
+		 * 코스요리의 이름 리스트 > 각 코스요리의 스타일, 전체 메뉴들의 DB키(리스트),
+		 * 할인된 총 가격
+		 * 할인 여부
+		 * 배달 요청 시간
+		 */
+		
+		/*
+		var Course = {};
+		
+		Course.style = 'Simple';
+		Course.menudbkey = [];
+		Course.menudbkey.push(dbkey); 		
+		Course.menuList = [];
+		
+		orderInfo.courseList.push(Course);
+		*/
+		
+		orderInfo.courseList = {};
+		
+		
+		var userInfo = {};
+		/*
+		 * 이름
+		 * 주소
+		 * 전화번호
+		 * 카드번호
+		 */
+		
+		
+		//JSON.stingify(orderInfo);
+		
+		window.onload = function()
+		{
+			for(id = 0; id < jsonobject['courselist'].length; id++)
+			{
+				var menuname, price, source;
+				
+				menuname = jsonobject['courselist'][id]['name'];
+				cost = jsonobject['courselist'][id]['totalprice'];
+				
+				source = "<a class='list-group-item'>\
+							"+menuname+"\
+							<button id='" +id+ "'type='submit' onclick='onClickedByCourseAddition(this.id)' class='btn btn-default btn-xs pull-right'>\
+								" +cost+ "\&nbsp;<i class='fa fa-arrow-right'></i></button></a>";
+				
+				document.getElementById('courseMenu').innerHTML += source; 	
+			}		
+		};
+		
+		function updateSelectionView()
+		{
+			var viewSource="";
+			
+			for(var i in selectedList)
+			{
+				viewSource += selectedList[i].source_select;
+			}
+			
+			//page에 동적으로 추가되는 소스를 html에 삽입한다.
+			document.getElementById('courseChoice').innerHTML = viewSource;
+		}
+		
+		// 2. Customized Yourself 수정
+		
+		function getAddtionalOptionSource(name, cost, menuKey)
+		{
+			var source_additional = "\
+								<a class='list-group-item'>\
+									<button type='submit' id='"+ menuKey +"' class='btn btn-default btn-xs '><i class='fa fa-plus'></i></button>\
+									"+name+"\
+									<span style='float:right; color:red;'>"+ cost + " \\"+"</span>\
+								</a>";
+    		return source_additional;
+		}
+		
+		function initOrderInfo(id, quantity)
+		{
+			var index = id + "-" + quantity;
+			var name = jsonobject['courselist'][id]['name'];
+			//키값에 해당하는 곳에 해당 코스요리의 이름을 넣음
+			//orderInfo.courseList = {id + "-" + quantity : course{name = name} }
+			orderInfo.courseList[index] = {};
+			orderInfo.courseList[index].mainMenuList = [];
+			orderInfo.courseList[index].subMenuList = [];
+			orderInfo.courseList[index].name = name;
+			alert(orderInfo.courseList[index].name);
+			
+			//선택된 코스요리의 가격
+			var cost = jsonobject['courselist'][id]['sub_menu_list'][quantity]['cost'];
+			orderInfo.courseList[id + "-" + quantity].cost = cost;
+			
+			var str ="";
+			
+			//메인메뉴 리스트 초기화
+			orderInfo.courseList[index].menuList = courseInfo[name].mainMenuList;
+			//서브메뉴 리스트 초기화
+			orderInfo.courseList[index].subMenuList = courseInfo[course_dbkey].subMenuList;
+			
+						
+			/*
+			if(selectedList[id].name == orderInfo.courseList[index].name)
+			{
+				//선택된 코스요리를 구성하는 메뉴들에대한 > 디비키값 : 이름
+				
+				for(var dbkey in courseInfo)
+				{
+					if()
+				}
+								
+				
+				//메인메뉴 리스트 초기화
+				for(var j = 0; j < jsonobject['courselist'][i]['main_menu_list'].length; j++ )
+				{
+					var dbkey = jsonobject['courselist'][i]['main_menu_list'][j]['dbkey'];
+					var name =  jsonobject['courselist'][i]['main_menu_list'][j]['name'];
+					
+					orderInfo.courseList[id + "-" + quantity].mainMenuList[dbkey] = name;
+				}
+				
+				//서브메뉴 리스트 초기화
+				for(var j = 0; j < jsonobject['courselist'][i]['sub_menu_list'].length; j++ )
+				{
+					var dbkey = jsonobject['courselist'][i]['sub_menu_list'][j]['dbkey'];
+					var name = 	jsonobject['courselist'][i]['sub_menu_list'][j]['name'];
+					str += name + ", ";
+					
+					orderInfo.courseList[id + "-" + quantity].subMenuList[dbkey] = name;
+				}
+
+			alert(str);
+			}*/
+			
+			
+			
+			
+		}
+		
+		function getSelectedCourseSource(id, quantity)
+		{
+			var name = jsonobject['courselist'][id]['name'];
+			
+			initOrderInfo(id, quantity);
+			
+			var source_option = "\
+    				<div class='panel panel-default' style='margin:3%;'>\
+    					<div class='panel-heading' style='padding-bottom:0'>\
+    							<b style='font-size: 20px;'>" +name+ "</b>\
+    						<p>\
+    						<div class='radio pull-right'>\
+  									<label>\
+    									<input type='radio' name='optionsRadios' id='radio" + id+"-"+quantity + "' value='option'>Add Here!\
+  									</label>\
+								</div>\
+    							<select class='form-control input-sm' id='courseStyle"+id+"-"+quantity+"' style='width:150px; margin-top:10px; margin-bottom:0;'>\
+    								<option>Simple</option>\
+									<option>Grand</option>\
+									<option>Deluxe</option>\
+								</select>\
+    						</p>\
+    					</div>\
+    					<div class='panel-body'>\
+    						<div class='list-group'>\
+    							<div id='selectedCourseMainMenu"+id+"-"+quantity+"'>\
+    								<!-- javascript : 동적 추가-->\
+								</div>\
+								<div id='selectedCourseSubMenu"+id+"-"+quantity+"'>\
+									<!-- javascript : 동적 추가-->\
+								</div>\
+							</div>\
+    					</div> <!-- panel-body -->\
+    				</div> <!-- panel -->";
+    		//alert(source_option);
+    		return source_option;
+		}
+		
+		function getMainMenuSource(name, cost)
+		{
+			var source_option_main = "<li class='list-group-item'>\
+										<b>"+name+"<b>\
+										<span style='float:right; color:red; font-weight:bold'>"+ cost + " \\"+"</span>\
+									</li>";
+									
+			return source_option_main;			
+		}
+		
+		function getSubMenuSource(name, cost, menuKey)
+		{
+			var source_option_sub = "<a class='list-group-item'>\
+										<button type='submit' id='"+ menuKey +"' class='btn btn-default btn-xs'><i class='fa fa-minus'></i></button>\
+										"+name+"\
+										<span style='float:right; color:red;'>"+ cost + " \\"+"</span>\
+									</a>";
+									
+			return source_option_sub;
+		}
+		
+		
+		function updateOptionView()
+		{
+			var viewSource_selected="";
+			var viewSource_additional="";
+			var source_option_main=[];
+			var source_option_sub=[];
+			var finded = [];
+			
+			//2. Addtional Options Panel
+			for(var i = 0; i < jsonobject['menulist'].length; i++)
+			{
+				var menuname = jsonobject['menulist'][i]['name'];
+				var cost = jsonobject['menulist'][i]['cost'];
+				var menuKey = jsonobject['menulist'][i]['dbkey'];
+				
+				viewSource_additional += getAddtionalOptionSource(menuname, cost, menuKey);
+			}
+			
+			
+			for(var i in selectedList)
+			{
+				for(var j = 0; j < selectedList[i].count; j++)
+					viewSource_selected += getSelectedCourseSource(i,j+1);
+				
+				for(var j = 0; j < jsonobject['courselist'][i]['main_menu_list'].length; j++)
+				{
+					var menuname = jsonobject['courselist'][i]['main_menu_list'][j]['name'];
+					var cost = jsonobject['courselist'][i]['main_menu_list'][j]['cost'];
+					
+					if(source_option_main[i] === undefined)
+						source_option_main[i] = getMainMenuSource(menuname, cost);
+					else
+						source_option_main[i] += getMainMenuSource(menuname, cost);
+				}
+					
+				/*
+				 * 
+				 * 
+				 * 메인메뉴 정보는 건드리지 않아도 됨
+				 * 
+				 * orderInfo.courseList[] 의 정보를 참조하여 소스 수정
+				 * 
+				 * 
+				 * onClickedByMenuAddtion 와 onClickedByMenuSubtraction 에서는 orderinfo.courseList의 정보만 수정해주면 된다.
+				 * 
+				 * 
+				 * 
+				 * 
+				 */
+				
+				var menuname = 
+				
+				/*
+				for(var index in orderInfo.courseList)
+				{
+					//selectedList에 있는 i번째 코스요리와 같은 이름의 코스요리정보를 찾는다.
+					if(selectedList[i].name == orderInfo.courseList[index].name)
+					{
+						if(finded[index] == true)
+							continue;
+						
+						finded[index] = true;
+						for(var i in orderInfo.courseList[index].subMenuList)
+						{
+							var menuname = orderInfo.courseList[index].subMenuList[i].name; //dbkey에 해당하는 메뉴의 이름
+							alert(menuname);
+							var cost = menuInfo[i].cost;
+						
+							if(source_option_sub[index] === undefined)
+								source_option_sub[index] = getSubMenuSource(menuname, cost, dbkey);
+							else
+								source_option_sub[index] += getSubMenuSource(menuname, cost, dbkey);
+						}	
+					}
+				}*/
+			}
+			
+			//page에 동적으로 추가되는 소스를 html에 삽입한다.
+			document.getElementById('selectedCourse').innerHTML = viewSource_selected;
+			document.getElementById('additionalOptions').innerHTML = viewSource_additional;
+			for(var i in selectedList)
+			{
+				for(var j = 1; j <= selectedList[i].count; j++)
+				{
+					//alert('selectedCourseMainMenu'+i+'-'+j);
+					//try{
+						document.getElementById('selectedCourseMainMenu'+i+'-'+j).innerHTML = source_option_main[i];
+						document.getElementById('selectedCourseSubMenu'+i+'-'+j).innerHTML = source_option_sub[i];
+					//}
+					//catch(e){alert(e.message);}
+				}
+			}
+		}
+		
+		
+		function onClickedByCourseAddition(id)
+		{
+			if(!(id in selectedList))
+			{
+				selectedList[id]={};
+				selectedList[id].count = 1;
+			}
+			else
+			{
+				selectedList[id].count++;
+			}
+			
+			var name = jsonobject['courselist'][id]['name'];
+			selectedList[id].name = name;
+			
+			var quantity = selectedList[id].count;
+						
+			var source_select="<li class='list-group-item'>\
+									<form class='form-inline' role='form' onsubmit='return false;'>\
+										<button id ='" +id+ "'type='submit' class='btn btn-default btn-xs pull-left' onclick='onClickedByCourseSubtraction(this.id)'><i class='fa fa-minus'></i></button>\
+										&nbsp" +name+ "\
+										<div class='input-group input-group-sm pull-right' style='width:100px; margin-top:-5px;'>\
+											<input type='number' class='form-control' placeholder='" +quantity+ "' readonly>\
+											<span class='input-group-addon'>EA</span>\
+										</div>\
+									</form>\
+								</li>";			
+
+			selectedList[id].source_select = source_select;
+			
+			updateSelectionView();
+			updateOptionView();
+		}
+		
+		function onClickedByCourseSubtraction(id)
+		{
+			if(selectedList[id].count == 1)
+			{
+				delete selectedList[id];
+			}
+			else
+			{
+				selectedList[id].count--;
+				var name = jsonobject['courselist'][id]['name'];			
+				var quantity = selectedList[id].count;
+				var source_select="<li class='list-group-item'>\
+									<form class='form-inline' role='form' onsubmit='return false;'>\
+										<button id ='" +id+ "'type='submit' class='btn btn-default btn-xs pull-left' onclick='onClickedByCourseSubtraction(this.id)'><i class='fa fa-minus'></i></button>\
+										&nbsp"+name+"\
+										<div class='input-group input-group-sm pull-right' style='width:100px; margin-top:-5px;'>\
+											<input type='number' class='form-control' placeholder='" +quantity+ "' readonly>\
+											<span class='input-group-addon'>EA</span>\
+										</div>\
+									</form>\
+								</li>";
+								
+				selectedList[id].source_select = source_select;
+			}
+			updateSelectionView();
+			updateOptionView();
+		}
+		
+		function onClickedByMenuAddtion(id)
+		{
+			var menuKey = id;
+			var selectedCourse="";
+			
+			for(var i in selectedList)
+			{
+				for(var j = 1; j <= selectedList[i].count; j++)
+				{
+					if(document.getElementById('radio' + i + '-' + j).checked() == true)
+					{
+						selectedCourse = "radio" + i + "-" + j;
+					}
+				}
+			}
+			
+						
+			
+		}
+		
+	</script>
+	
+	<body>   		
+		<!-- icon .fa 클래스 display 오버라이딩-->
+		<style>.fa{display:inline;}</style>
+		<a id='menu-toggle' href='#' class='btn btn-dark btn-lg toggle'><i class='fa fa-bars'></i></a>
+		<nav id='sidebar-wrapper' class=''>
+	    	<ul class='sidebar-nav'>
+   	        	<a id='menu-close' href='#' class='btn btn-light btn-lg pull-right toggle'><i class='fa fa-times'></i></a>
+   	        	<li class='sidebar-brand'>
+                	<a href='#top'>Order</a>
+           		</li>
+            	<li>
+            		<a href='index.html'><i class='fa fa-home'></i>&nbsp;Home</a> 
+            	</li>
+            	<li>
+            		<a href='#top'><i class='fa fa-arrow-circle-up'></i>&nbsp;Top</a> 
+            	</li>
+            	<li>
+            		<a href='#select'><i class='fa fa-cutlery'></i>&nbsp;Select Course Menu</a> 
+            	</li>
+            	<li>
+            		<a href='#options'><i class='fa fa-cutlery'></i>&nbsp;Additional Options</a> 
+            	</li>
+            	<li>
+            		<a href='#confirm'><i class='fa fa-cutlery'></i>&nbsp;Confirm Order</a> 
+            	</li>
+            	<!-- 구분선 <li class='divider' style='background-color: white;'></li> -->
+            	<li><!-- 로그인 모달 붙이기-->
+            	    <a href='index.html'><i class='fa fa-check-square-o'></i>&nbsp;Log In</a>
+            	</li>
+            	<li><!-- 회원가입페이지 fa-slideshare -->
+            	    <a href='register.html'><i class='fa fa-users'></i>&nbsp;Register</a>
+            	</li>
+        	</ul>
+    	</nav>
+    <header id='top' class='header'>
+    	<div class='text-vertical-center'>
+			<h1 style='color:rgba(255,130,0,1); font-size:700%;'>
+				<i class='fa fa-cutlery fa-fw' ></i> <b>Order</b>
+			</h1>
+			<div style='height:50px'></div>
+			<a href='#select' class='btn btn-link' style='font-size:40px; color:orange; font-weight: bold'>Start!</a>
+		</div>
+    </header>
+   <!-- 1. Select Course Dishes -->
+    <section id='select' class='select'>
+    	<!-- text-shadow: 3px 3px 5px orange; -->
+    	<h1 align='center' style='padding:3%; color:orange; font-size:500%;'>
+    		<b>1. Select Course Dishes</b>
+    	</h1>
+        <div class='container'>
+        	<div class='row' style='margin-right:100px;'>
+        		<!-- 왼쪽 메뉴 선택창 -->
+        		<div class='col-md-6'>			
+					<!-- 패널 속 리스트 -->
+					<div class='panel panel-default'>
+        				<div class='panel-heading'>
+	    					<b style='font-size: 20px;'>Select Course Menu</b>
+    					</div>
+	    			
+    					<div class='panel-body'>
+							<div class='list-group' id='courseMenu'>
+								
+								
+								<!-- Javascript: onload()-->
+								
+								
+							</div>
+						</div> <!-- /.panel-body -->
+					</div> <!-- panel -->	           		
+	    		</div> <!-- /.col-md-6 -->
+	    		<!-- 오른쪽 메뉴 사이드바 -->
+        		<div class='col-md-6' style='padding-right:0;'>
+        			<div class='panel panel-default'>
+        				<div class='panel-heading'>
+	    					<b style='font-size: 20px;'>Your Choices</b>
+    					</div>
+    					<div class='panel-body'>
+	        				<ul class='list-group' id='courseChoice'>					
+								
+								
+								<!-- Javascript: onClickedMenuAddition(), onClickedMenuSubtraction() -->
+								
+								
+							</ul>
+						</div><!-- /.panel-body -->
+					</div><!-- /.panel -->
+        		</div><!-- /.col-md-6 -->
+        	</div>
+        	
+        	<div class='col-md-12' align='center' style='padding:50px 0;'>
+            	<a href='#options' class='btn btn-link' style='font-size:40px; color:orange; font-weight: bold; margin-right:100px;'>
+            		Next <i class='fa fa-angle-double-down'></i></a>
+           	</div>
+        </div><!-- /.container -->
+    </section>
+    
+    <!-- 2. Additional Options -->
+    <section id='options' class='options'>
+    	<h1 align='center' style='padding:3%; color:orange; font-size:500%;'>
+    		<b>2. Customize Yourself!</b>
+    	</h1>
+        <div class='container'>
+    		<!-- 하나의 코스요리에 대한 옵션 선택창 -->
+    		<div class='row' style='background-color:rgba(200,200,200,0.7); border-radius: 30px; margin-right:100px'>
+    			<div class="col-md-6" id='selectedCourse'>
+    				
+    				
+    				<!-- 동적 변화 -->
+    				
+    				
+    			</div>
+    			
+    			<div class="col-md-6">
+    				<div class='panel panel-default' style='margin:3%;'>
+    					<div class='panel-heading'>
+    						<b style='font-size: 20px;'>Additional Options</b>
+    					</div>
+    					<div class='panel-body' id='additionalOptions'>
+    						<ul class='list-group'>
+    							
+    							
+    							<!-- 동적 변화 -->
+    							
+    							
+    						</ul>
+    					</div>
+    				</div>
+    			</div>	
+    		</div> <!-- /.row -->
+    		<div class='col-md-12' align='center' style='padding:50px 0;'>
+            	<a href='#confirm' class='btn btn-link' style='font-size:40px; color:orange; font-weight: bold; margin-right:100px;'>
+            		Next <i class='fa fa-angle-double-down'></i></a>
+           	</div>
+        </div><!-- /.container -->
+    </section>
+    
+    <!-- 3. Confirm Order -->
+    <section id='confirm' class='confirm'>
+    	<h1 align='center' style='color:orange; font-size:500%;'>
+    		<b>3. Confirm Order</b>
+    	</h1>
+    	
+        <div class='container'>
+    		<div class='row' style='background-color:rgba(200,200,200,0.7); border-radius: 30px; margin-right:100px;' >
+    			<!-- 1. 주문 정보 -->
+    			<div class='col-md-12'>
+    				<!-- 주문정보가 출력되는 전체 패널 -->
+    				<div class='panel panel-default' style='margin:3%;'>
+    					<div class='panel-heading'>
+    						<b style='font-size: 20px;'>
+    							<i class='fa fa-cutlery'></i> Your Order</b>
+    					</div>
+    					<!-- 각각의 코스요리 정보 패널을 담는 패널바디 -->
+    					<div class='panel-body'>
+    						<!-- 첫번째 코스요리 정보 패널 -->
+    						<div class='col-md-6'>
+    							<div class='panel panel-default' style='margin:3%;'>
+    								<div class='panel-heading'>
+    									<b><i class='fa fa-check'></i> Course Menu1 : </b>
+			    						<b style='color:red;'>Grand</b>
+			    						<b style='color:red; float:right'>19,900 \</b>
+    								</div>
+    								<div class='panel-body'>
+    									<div class='list-group'>
+											<li class='list-group-item'>
+												Main Menu
+											</li>
+											<a class='list-group-item'>
+												<span class='badge pull-left' style='margin-right:10px;'>2</span>
+												Sub Menu1
+											</a>
+											<a class='list-group-item'>
+												<span class='badge pull-left' style='margin-right:10px;'>1</span>
+												Sub Menu2
+											</a>
+										</div>
+							
+    								</div>
+    							</div> 
+    						</div><!-- 첫번째 코스요리 정보 -->
+    						
+    						<!-- 두번째 코스요리 정보 패널 -->
+    						<div class='col-md-6'>
+    							<div class='panel panel-default' style='margin:3%;'>
+    								<div class='panel-heading'>
+    									<b><i class='fa fa-check'></i> Course Menu2 : </b>
+			    						<b style='color:red;'>Simple</b>
+			    						<b style='color:red; float:right'>15,900 \</b>
+    								</div>
+    								<div class='panel-body'>
+    									<div class='list-group'>
+											<li class='list-group-item'>
+												Main Menu
+											</li>
+											<a class='list-group-item'>
+												<span class='badge pull-left' style='margin-right:10px;'>1</span>
+												Sub Menu1
+											</a>
+											<a class='list-group-item'>
+												<span class='badge pull-left' style='margin-right:10px;'>1</span>
+												Sub Menu2
+											</a>
+										</div>
+							
+    								</div>
+    							</div> 
+    						</div><!-- 두번째 코스요리 정보 -->
+    						
+    						
+    					<!-- 바디 내용 끝 -->
+    					</div><!-- /.panel-body -->
+    				</div><!-- /.panel -->
+    			</div><!-- /.주문정보 -->
+    			    			
+    			<!-- 2. 고객 정보 -->
+    			<div class='col-md-12'>
+    				<div class='panel panel-default' style='margin:3%;'>
+    					<div class='panel-heading'>
+    						<b style='font-size: 20px;'>
+    							<i class='fa fa-user'></i> Customer Information
+    						</b>
+    					</div>
+    					<div class='panel-body'>
+    						<div class='col-md-6' style='padding:10px;'>
+    							<form class='form-inline' role='form' >
+    								<b style='margin-top:5px;'>
+    									<i class='fa fa-check'></i> Name : 
+    								</b>
+    								<input type='text' class='form-control input-sm pull-right' id='nameInput' placeholder='JINSEONG KIM' disabled
+    									style='margin:-5px 30px 0 0;'>
+    							</form>
+    						</div>
+    						<div class='col-md-6' style='padding:10px;'>
+    							<form class='form-inline' role='form' >
+    								<b style='margin-top:5px;'>
+    									<i class='fa fa-check'></i> Address : 
+    								</b>
+    								<input type='text' class='form-control input-sm pull-right' id='addressInput' placeholder='서울시립대 정기관'
+    									style='margin:-5px 30px 0 0;'>
+    							</form>
+    						</div>
+    						<div class='col-md-6' style='padding:10px;'>
+    							<form class='form-inline' role='form' >
+    								<b style='margin-top:5px;'>
+    									<i class='fa fa-check'></i> Phone Number : 
+    								</b>
+    								<input type='text' class='form-control input-sm pull-right' id='phoneInput' placeholder='010-7584-7896'
+    									style='margin:-5px 30px 0 0;'>
+    							</form>
+    						</div>
+    						<div class='col-md-6' style='padding:10px;'>
+    							<form class='form-inline' role='form' >
+    								<b style='margin-top:5px;'>
+    									<i class='fa fa-check'></i> Creaditcard Number : 
+    								</b>
+    								<input type='text' class='form-control input-sm pull-right' id='creditcardInput' placeholder='1234-5678-9876-1234'
+    									style='margin:-5px 30px 0 0;'>
+    							</form>
+    						</div>
+							
+    					</div>
+    				</div>
+    			</div>
+    		</div> <!-- /.row -->
+    		
+    		<!-- next page : order complete page -->
+    		<div class='col-md-12' style='padding:50px 0;'>
+            	<a href='#confirm' class='btn btn-link pull-right' style='font-size:40px; color:orange; font-weight: bold; margin-right:100px;'>
+            		Order <i class='fa fa-angle-double-right'></i></a>
+           	</div>
+    		
+        </div>
+	</section>
+   	
+    <script src='js/jquery.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <!-- WoW animations -->
+    <script src='js/customized/wow.min.js'></script>
+    <!-- Easing for image animations -->
+    <script src='js/customized/jquery.easing.min.js'></script>
+    
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+	</body>
+</html>
+
+
+
+

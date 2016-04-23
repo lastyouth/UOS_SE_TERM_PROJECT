@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>Welcome to Mr.Mat's Restaurant</title>
+		<meta name="description" content="" />
+		<meta name="author" content="T1000" />
+
+		<!-- 반응형 UI -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    	
+    	<!-- CDN 으로 링크하기. 왜 안되는지 모르겠음.. http://www.bootstrapcdn.com/
+    		bootstrap.min.css 사용법 찾아보기 > 부트스트랩2.0 > 3.0 클래스 이름과 정의가 많이 바뀜
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+    	
+    	<!-- Custom CSS-->
+    	<link href="css/customized_order.css" rel="stylesheet">
+    	
+    	<!-- set bootstrap, font, style
+    	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>-->
+    	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    	<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	   
+	    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+	    <!--<script src="http://getbootstrap.com/js/bootstrap.js"></script>-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	</head>
+	
+	<body>
+		<header style="margin:50px 0; text-align: center;">
+				<h1 style="color:rgba(255,100,0,1); font-size:700%;">
+					<i class="fa fa-users fa-fw" ></i> <b>Register</b>
+				</h1>
+		</header>
+		
+		<!-- 회원가입 폼 상,하 여백 오버라이딩, Input box 크기 지정 -->
+		<style>
+			.col-md-4 {height:50px; padding:10px 0; font-size:20px}
+			.col-md-8 {height:50px; padding:10px 0;}
+			.name {width: 150px;}
+			.email {width: 350px;}
+			.password {width: 200px;}
+			.creditcard {width: 200px;}
+		</style>
+		<div class="container">
+			<!-- 회원가입 폼 -->
+			<div class="row" style="margin-top:50px;">
+				<!-- 왼쪽 폼 -->
+				<div class="col-md-6">
+					<div class="col-md-4">
+						<b><i class="fa fa-check"></i> Name :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="text" class="form-control name" id="inputName" maxlength="20" autofocus="">
+					</div>
+					<div class="col-md-4 ">
+						<b><i class="fa fa-check"></i> Email(ID) :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="email" class="form-control email" id="inputEmail">
+					</div>
+					<div class="col-md-4 ">
+						<b><i class="fa fa-check"></i> Password :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="password" class="form-control password" id="inputPassword">
+					</div>
+					<div class="col-md-4 ">
+						<b><i class="fa fa-check"></i> Confirm Pwd :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="password" class="form-control password" id="inputConfirmPassword">
+					</div>
+				</div>
+					
+				<!-- 오른쪽 폼 -->
+				<div class="col-md-6">
+					<div class="col-md-4">
+						<b><i class="fa fa-check"></i> Address :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="text" class="form-control" id="inputAddress">
+					</div>
+					<div class="col-md-4">
+						<b><i class="fa fa-check"></i> Creditcard No :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="text" class="form-control creditcard" id="inputCreditcardNumber" maxlength="16">
+					</div>
+					<div class="col-md-4">
+						<b><i class="fa fa-check"></i> Phone No :</b>
+					</div>
+					<div class="col-md-8 ">
+						<input type="text" class="form-control creditcard" id="inputPhoneNumber" maxlength="11">
+					</div>
+				</div>
+				
+				<div class="col-md-offset-5 col-md-2" style="margin-top:50px;">
+					<button class="btn btn-default btn-lg" type="submit" href=""><b>Register</b></button>
+				</div>
+			</div><!-- /.row -->
+			
+		</div><!-- /.container -->
+	</body>
+</html>
+	

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"/>
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>Welcome to Mr.Mat's Restaurant</title>
+		<meta name="description" content="" />
+		<meta name="author" content="T1000" />
+
+		<!-- 반응형 UI -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    	
+    	<!-- CDN 으로 링크하기. 왜 안되는지 모르겠음.. http://www.bootstrapcdn.com/
+    		bootstrap.min.css 사용법 찾아보기 > 부트스트랩2.0 > 3.0 클래스 이름과 정의가 많이 바뀜!
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+    	
+    	<!-- Custom CSS-->
+    	<link href="css/customized_order.css" rel="stylesheet">
+    	
+    	<!-- set bootstrap, font, style
+    	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>-->
+    	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    	<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	   
+	    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+	    <!--<script src="http://getbootstrap.com/js/bootstrap.js"></script>-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	</head>
+
+	<body>
+		<!--
+		<div class="pre-loader" style="display: none;">
+        	<div class="load-con">
+            	<img src="image/loading.gif" class="animated fadeInDown" alt="">
+        	</div>
+		</div> -->
+		<!--
+		<div class="loadstack" style="display: none;">
+        	<div class="spinner"></div>
+		</div> -->
+   		
+		<!-- icon .fa 클래스 display 오버라이딩-->
+		<style>.fa{display:inline;}</style>
+		<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+		<nav id="sidebar-wrapper" class="">
+	    	<ul class="sidebar-nav">
+   	        	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+   	        	<li class="sidebar-brand">
+                	<a href="#top">Order</a>
+           		</li>
+            	<li>
+            		<a href="index.html"><i class="fa fa-home"></i>&nbsp;Home</a> 
+            	</li>
+            	<li>
+            		<a href="#top"><i class="fa fa-arrow-circle-up"></i>&nbsp;Top</a> 
+            	</li>
+            	<li>
+            		<a href="#select"><i class="fa fa-cutlery"></i>&nbsp;Select Course Menu</a> 
+            	</li>
+            	<li>
+            		<a href="#options"><i class="fa fa-cutlery"></i>&nbsp;Additional Options</a> 
+            	</li>
+            	<li>
+            		<a href="#confirm"><i class="fa fa-cutlery"></i>&nbsp;Confirm Order</a> 
+            	</li>
+            	<!-- 구분선 <li class="divider" style="background-color: white;"></li> -->
+            	<li><!-- 로그인 모달 붙이기-->
+            	    <a href="index.html"><i class="fa fa-check-square-o"></i>&nbsp;Log In</a>
+            	</li>
+            	<li><!-- 회원가입페이지 fa-slideshare -->
+            	    <a href="register.html"><i class="fa fa-users"></i>&nbsp;Register</a>
+            	</li>
+        	</ul>
+    	</nav>
+    <header id="top" class="header">
+    	<div class="text-vertical-center">
+			<h1 style="color:rgba(255,130,0,1); font-size:700%;">
+				<i class="fa fa-cutlery fa-fw" ></i> <b>Order</b>
+			</h1>
+			<div style="height:50px"></div>
+			<a href="#select" class="btn btn-link" style="font-size:40px; color:orange; font-weight: bold">Start!</a>
+		</div>
+    </header>
+   <!-- 1. Select Course Dishes -->
+    <section id="select" class="select">
+    	<!-- text-shadow: 3px 3px 5px orange; -->
+    	<h1 align="center" style="padding:3%; color:orange; font-size:500%;">
+    		<b>1. Select Course Dishes</b>
+    	</h1>
+        <div class="container">
+        	<div class="row" style="margin-right:100px;">
+        		<!-- 왼쪽 메뉴 선택창 -->
+        		<div class="col-md-6">			
+					<!-- 패널 속 리스트 -->
+					<div class="panel panel-default">
+        				<div class="panel-heading">
+	    					<b style="font-size: 20px;">Select Course Menu</b>
+    					</div>
+	    			
+    					<div class="panel-body">
+							<div class="list-group">
+								<a class="list-group-item" style="min-height: 44px;">
+									French Course With Foie gras
+									<button type="submit" class="btn btn-default btn-xs pull-right">15,500 \&nbsp;<i class="fa fa-arrow-right"></i></button>
+									
+								</a>
+								<a class="list-group-item">
+									Korean Table d'hote With SinSeonRo
+									<button type="submit" class="btn btn-default btn-xs pull-right">15,500 \&nbsp;<i class="fa fa-arrow-right"></i></button>
+								</a>
+								<a class="list-group-item">
+									Italian Course With Gorgonzola
+									<button type="submit" class="btn btn-default btn-xs pull-right">15,500 \&nbsp;<i class="fa fa-arrow-right"></i></button>
+								</a>
+								<a class="list-group-item">
+									Fish & Chips Course With Beer
+									<button type="submit" class="btn btn-default btn-xs pull-right">15,500 \&nbsp;<i class="fa fa-arrow-right"></i></button>
+								<a class="list-group-item">
+									Special Wine Course
+									<button type="submit" class="btn btn-default btn-xs pull-right">15,500 \&nbsp;<i class="fa fa-arrow-right"></i></button>
+								</a>
+							</div>
+						</div> <!-- /.panel-body -->
+					</div> <!-- panel -->	           		
+	    		</div> <!-- /.col-md-6 -->
+	    		<!-- 오른쪽 메뉴 사이드바 -->
+        		<div class="col-md-offset-1 col-md-5" style="padding-right:0;">
+        			<div class="panel panel-default">
+        				<div class="panel-heading">
+	    					<b style="font-size: 20px;">Your Choices</b>
+    					</div>
+	    			
+    					<div class="panel-body">
+	        				<ul class="list-group">					
+								<li class="list-group-item">
+									<form class="form-inline" role="form">
+										Special Wine Course
+										<div class="input-group input-group-sm pull-right" style="width:100px; margin-top:-5px;">
+											<input type="number" class="form-control" placeholder="">
+											<span class="input-group-addon">EA</span>
+										</div>
+									</form>
+								</li>
+								
+								<li class="list-group-item">
+									<form class="form-inline" role="form">
+										Korean Table d'hote With SinSeonRo
+										<div class="input-group input-group-sm pull-right" style="width:100px; margin-top:-5px;">
+											<input type="number" class="form-control" placeholder="">
+											<span class="input-group-addon">EA</span>
+										</div>
+									</form>
+								</li>
+						
+								<li class="list-group-item">
+									<form class="form-inline" role="form">
+										Korean Table d'hote With SinSeonRo
+										<div class="input-group input-group-sm pull-right" style="width:100px; margin-top:-5px;">
+											<input type="number" class="form-control" placeholder="">
+											<span class="input-group-addon">EA</span>
+										</div>
+									</form>
+								</li>
+							</ul>
+						</div><!-- /.panel-body -->
+						
+					</div><!-- /.panel -->
+        		</div><!-- /.col-md-6 -->
+        	</div>
+        	
+        	<div class="col-md-12" align="center" style="padding:50px 0;">
+            	<a href="#options" class="btn btn-link" style="font-size:40px; color:orange; font-weight: bold; margin-right:100px;">
+            		Next <i class="fa fa-angle-double-down"></i></a>
+           	</div>
+        	
+        </div><!-- /.container -->
+    </section>
+    
+    <!-- 2. Additional Options -->
+    <section id="options" class="options">
+    	<h1 align="center" style="padding:3%; color:orange; font-size:500%;">
+    		<b>2. Additional Options</b>
+    	</h1>
+        <div class="container">
+    		<!-- 하나의 코스요리에 대한 옵션 선택창 -->
+    		<div class="row" style="background-color:rgba(200,200,200,0.7); border-radius: 30px; margin-right:100px">
+    			<!-- 선택된 코스요리의 기본 정보 -->
+    			<div class="col-md-6">
+    				<div class="panel panel-default" style="margin:3%;">
+    					<div class="panel-heading">
+    						<form class="form-inline" role="form">
+    							<b style="font-size: 20px;">Course Menu</b>
+    							<select class="form-control input-sm pull-right" style="width:150px; margin-top:-5px;">
+    								<option>Simple</option>
+									<option>Grand</option>
+									<option>Deluxe</option>
+								</select>
+    						</form>
+    						
+    					</div>
+    					<div class="panel-body">
+    						<div class="list-group">
+    							<div id='insert_main'>
+    								<li class="list-group-item">
+										Main Menu
+									</li>
+								</div>
+								<div id='insert_sub'>
+									<a class="list-group-item">
+										<span class="badge pull-left" style="margin-right:10px;">2</span>
+										Sub Menu
+										<button type="submit" class="btn btn-default btn-xs pull-right"><i class="fa fa-minus"></i></button>
+									</a>
+								</div>								
+							</div>
+							
+    					</div> <!-- panel-body -->
+    				</div> <!-- panel -->
+    			</div>
+    					
+    			<!-- 추가 옵션 -->
+    			<div class="col-md-6">
+    				<div class="panel panel-default" style="margin:3%;">
+    					<div class="panel-heading">
+    						<b style="font-size: 20px;">Additional Options</b>
+    					</div>
+    					<div class="panel-body">
+    						<ul class="list-group">
+								<a class="list-group-item">
+									Wine
+									<button type="submit" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i></button>
+								</a>
+								<a class="list-group-item">
+									SinSeonRo
+									<button type="submit" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i></button>
+								</a>
+							</ul>
+							
+    					</div>
+    				</div>
+    			</div>
+    		</div> <!-- /.row -->
+    		<div class="col-md-12" align="center" style="padding:50px 0;">
+            	<a href="#confirm" class="btn btn-link" style="font-size:40px; color:orange; font-weight: bold; margin-right:100px;">
+            		Next <i class="fa fa-angle-double-down"></i></a>
+           	</div>
+        </div><!-- /.container -->
+    </section>
+    
+    <!-- 3. Confirm Order -->
+    <section id="confirm" class="confirm">
+    	<h1 align="center" style="color:orange; font-size:500%;">
+    		<b>3. Confirm Order</b>
+    	</h1>
+    	
+        <div class="container">
+    		<div class="row" style="background-color:rgba(200,200,200,0.7); border-radius: 30px; margin-right:100px;" >
+    			<!-- 1. 주문 정보 -->
+    			<div class="col-md-12">
+    				<!-- 주문정보가 출력되는 전체 패널 -->
+    				<div class="panel panel-default" style="margin:3%;">
+    					<div class="panel-heading">
+    						<b style="font-size: 20px;">
+    							<i class="fa fa-cutlery"></i> Your Order</b>
+    					</div>
+    					<!-- 각각의 코스요리 정보 패널을 담는 패널바디 -->
+    					<div class="panel-body">
+    						<!-- 첫번째 코스요리 정보 패널 -->
+    						<div class="col-md-6">
+    							<div class="panel panel-default" style="margin:3%;">
+    								<div class="panel-heading">
+    									<b><i class="fa fa-check"></i> Course Menu1 : </b>
+			    						<b style="color:red;">Grand</b>
+			    						<b style="color:red; float:right">19,900 \</b>
+    								</div>
+    								<div class="panel-body">
+    									<div class="list-group">
+											<li class="list-group-item">
+												Main Menu
+											</li>
+											<a class="list-group-item">
+												<span class="badge pull-left" style="margin-right:10px;">2</span>
+												Sub Menu1
+											</a>
+											<a class="list-group-item">
+												<span class="badge pull-left" style="margin-right:10px;">1</span>
+												Sub Menu2
+											</a>
+										</div>
+							
+    								</div>
+    							</div> 
+    						</div><!-- 첫번째 코스요리 정보 -->
+    						
+    						<!-- 두번째 코스요리 정보 패널 -->
+    						<div class="col-md-6">
+    							<div class="panel panel-default" style="margin:3%;">
+    								<div class="panel-heading">
+    									<b><i class="fa fa-check"></i> Course Menu2 : </b>
+			    						<b style="color:red;">Simple</b>
+			    						<b style="color:red; float:right">15,900 \</b>
+    								</div>
+    								<div class="panel-body">
+    									<div class="list-group">
+											<li class="list-group-item">
+												Main Menu
+											</li>
+											<a class="list-group-item">
+												<span class="badge pull-left" style="margin-right:10px;">1</span>
+												Sub Menu1
+											</a>
+											<a class="list-group-item">
+												<span class="badge pull-left" style="margin-right:10px;">1</span>
+												Sub Menu2
+											</a>
+										</div>
+							
+    								</div>
+    							</div> 
+    						</div><!-- 두번째 코스요리 정보 -->
+    						
+    						
+    					<!-- 바디 내용 끝 -->
+    					</div><!-- /.panel-body -->
+    				</div><!-- /.panel -->
+    			</div><!-- /.주문정보 -->
+    			    			
+    			<!-- 2. 고객 정보 -->
+    			<div class="col-md-12">
+    				<div class="panel panel-default" style="margin:3%;">
+    					<div class="panel-heading">
+    						<b style="font-size: 20px;">
+    							<i class="fa fa-user"></i> Customer Information
+    						</b>
+    					</div>
+    					<div class="panel-body">
+    						<div class="col-md-6" style="padding:10px;">
+    							<form class="form-inline" role="form" >
+    								<b style="margin-top:5px;">
+    									<i class="fa fa-check"></i> Name : 
+    								</b>
+    								<input type="text" class="form-control input-sm pull-right" id="nameInput" placeholder="JINSEONG KIM" disabled
+    									style="margin:-5px 30px 0 0;">
+    							</form>
+    						</div>
+    						<div class="col-md-6" style="padding:10px;">
+    							<form class="form-inline" role="form" >
+    								<b style="margin-top:5px;">
+    									<i class="fa fa-check"></i> Address : 
+    								</b>
+    								<input type="text" class="form-control input-sm pull-right" id="addressInput" placeholder="서울시립대 정기관"
+    									style="margin:-5px 30px 0 0;">
+    							</form>
+    						</div>
+    						<div class="col-md-6" style="padding:10px;">
+    							<form class="form-inline" role="form" >
+    								<b style="margin-top:5px;">
+    									<i class="fa fa-check"></i> Phone Number : 
+    								</b>
+    								<input type="text" class="form-control input-sm pull-right" id="phoneInput" placeholder="010-7584-7896"
+    									style="margin:-5px 30px 0 0;">
+    							</form>
+    						</div>
+    						<div class="col-md-6" style="padding:10px;">
+    							<form class="form-inline" role="form" >
+    								<b style="margin-top:5px;">
+    									<i class="fa fa-check"></i> Creaditcard Number : 
+    								</b>
+    								<input type="text" class="form-control input-sm pull-right" id="creditcardInput" placeholder="1234-5678-9876-1234"
+    									style="margin:-5px 30px 0 0;">
+    							</form>
+    						</div>
+							
+    					</div>
+    				</div>
+    			</div>
+    		</div> <!-- /.row -->
+    		
+    		<!-- next page : order complete page -->
+    		<div class="col-md-12" style="padding:50px 0;">
+            	<a href="#confirm" class="btn btn-link pull-right" style="font-size:40px; color:orange; font-weight: bold; margin-right:100px;">
+            		Order <i class="fa fa-angle-double-right"></i></a>
+           	</div>
+    		
+        </div>
+	</section>
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- WoW animations -->
+    <script src="js/customized/wow.min.js"></script>
+    <!-- Easing for image animations -->
+    <script src="js/customized/jquery.easing.min.js"></script>
+    
+    
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+	</body>
+</html>
+
+
+
+

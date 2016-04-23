@@ -1,0 +1,26 @@
+
+    			/*
+		 * jsonobject['menulist'] -> 모든 메뉴 리스트
+		 * 		jsonobject['menulist'].length -> 메뉴의 개수
+		 * 		jsonobject['menulist'][i] -> 하나의 메뉴
+		 * 				jsonobject['menulist'][i]['dbkey'] -> 메뉴에 대응되는 dbkey
+		 * 				jsonobject['menulist'][i]['name'] -> 메뉴 이름
+		 * 				jsonobject['menulist'][i]['ingredient_list'] -> 메뉴에 포함되는 원재료 리스트
+		 * 					jsonobject['menulist'][i]['ingredient_list']['dbkey'] -> 원재료의 dbkey
+		 * 					jsonobject['menulist'][i]['ingredient_list']['name'] -> 원재료의 이름
+		 * 					jsonobject['menulist'][i]['ingredient_list']['val'] -> 메뉴에 필요한 원재료의 수치
+		 * 				jsonobject['menulist'][i]['discription'] -> 메뉴 설명
+		 * 				jsonobject['menulist'][i]['cost'] -> 메뉴 가격
+		 * 
+		 * jsonobject['courselist'] -> 모든 코스 리스트
+		 * 		jsonobject['courselist'].length -> 코스 메뉴의 개수
+		 * 		jsonobject['courselist'][i] -> 하나의 코스요리
+		 * 				jsonobject['courselist'][i]['dbkey'] -> 코스 요리의 dbkey
+		 * 				jsonobject['courselist'][i]['name'] -> 코스 요리의 이름
+		 * 				jsonobject['courselist'][i]['main_menu_list'] -> 메인 메뉴 리스트
+		 * 					jsonobject['courselist'][i]['main_menu_list'].length -> 메인 메뉴 개수
+		 * 				jsonobject['courselist'][i]['sub_menu_list'] -> 서브 메뉴 리스트
+		 * 					jsonobject['courselist'][i]['sub_menu_list'] -> 서브 메뉴 개수
+		 * 				jsonobject['courselist'][i]['style_list'] -> 가능한 스타일 리스트
+		 * 				jsonobject['courselist'][i]['discription'] -> 코스 요리 설명
+		 */
